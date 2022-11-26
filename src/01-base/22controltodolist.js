@@ -13,20 +13,30 @@ class App extends Component {
     //     }
     // }
     state = {
+        inputValue:"",
         list: [
-            {id: 1, text: '111'},
-            {id: 2, text: '222'},
-            {id: 3, text: '333'}
+            {id: 1, text: '111', isChecked:false},
+            {id: 2, text: '222', isChecked:false},
+            {id: 3, text: '333', isChecked:false},
         ]
     }
     myRef = React.createRef()
 
     render() {
         // var text='mark'
+        var content = {
+            textDecorationLine:'underline',
+            color:'red'
+
+        }
         return (
             <div>
                 <h1>welcome react develop</h1>
-                <input ref={this.myRef}/>
+                <input value={this.state.inputValue} onChange={
+                    (evt)=>this.setState({
+                        inputValue:evt.target.value
+                    })
+                }/>
                 <button onClick={() => {
                     this.handleClick2()
                 }}>add
@@ -34,15 +44,16 @@ class App extends Component {
                 <ul>
                     {
                         this.state.list.map((item, index) => <li key={item.id}>
-                            {/*{item.text}*/}
-                            <span dangerouslySetInnerHTML={
+                            <input type="checkbox" checked={item.isChecked} onChange={
+                                ()=>this.checkItem(index)}/>
+                            <span style={item.isChecked?content:null} dangerouslySetInnerHTML={
                                 {
                                     __html:item.text
                                 }
                             }></span>
                             <button onClick={() => {
                                 this.delete(index)
-                            }}>delete
+                            }}>del
                             </button>
                         </li>)
                     }
@@ -52,17 +63,26 @@ class App extends Component {
         );
     }
 
+    checkItem(index){
+        console.log(index)
+        let newList = [...this.state.list]
+        newList[index].isChecked = !newList[index].isChecked
+        this.setState({
+            list:newList
+        })
+    }
+
     handleClick2 = () => {
         let newList = [...this.state.list]
         let newId = this.state.list.length + 1
         newList.push({
             id: newId,
-            text: this.myRef.current.value
+            text: this.state.inputValue
         })
-        this.setState(
-            {list: newList}
-        )
-        this.myRef.current.value = ''
+        this.setState({
+            list: newList,
+            inputValue:''
+        })
     }
 
     delete = (index) => {
