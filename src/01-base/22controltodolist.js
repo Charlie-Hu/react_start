@@ -25,8 +25,8 @@ class App extends Component {
     render() {
         // var text='mark'
         var content = {
-            textDecorationLine:'underline',
-            color:'red'
+            textDecoration:'line-through',
+            color:'blue'
 
         }
         return (
