@@ -1,0 +1,18 @@
+.Employee img {
+    width: 100px;
+    float: left;
+}
+
+.Employee{
+    overflow:hidden;
+    padding:10px;
+}
+.EmployeeDetail{
+    position: fixed;
+    right:10%;
+    top:100px;
+    background: grey;
+    width:30%;
+    height:30%;
+    text-align: center;
+}

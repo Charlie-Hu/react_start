@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './css/cinema.css';
+import './css/02cinema.css';
 import Cinema from './optioncardcomponent2/cinemacomponent';
 import Userinfo from './optioncardcomponent2/userinfocomponent';
 import Movie from "./optioncardcomponent2/moviecomponent";

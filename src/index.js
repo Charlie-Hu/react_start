@@ -24,7 +24,10 @@ import ReactDOM from 'react-dom/client'
 // import App from './01-base/22controltodolist'
 // import App from './02-advance/01childtoparent'
 // import App from './02-advance/02uncontroloptionalcard'
-import App from './02-advance/03controloptionalcard'
+// import App from './02-advance/03controloptionalcard'
+// import App from './02-advance/04communication'
+// import App from './02-advance/05ref_form'
+import App from './02-advance/06statusadvance'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
