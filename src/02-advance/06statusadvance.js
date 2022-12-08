@@ -3,31 +3,33 @@ import axios from 'axios'
 import './css/03comunication.css'
 
 class App extends Component {
-    constructor(){
+    constructor() {
         super()
-        this.state={
-            employeeList:[],
-            info:""
+        this.state = {
+            employeeList: [],
+            info: ""
         }
+    }
+
+    componentDidMount() {
         axios.get(`./test.json`).then(
-            res=>{
+            res => {
                 console.log(res.data.employees.employee)
                 this.setState({
-                    employeeList:res.data.employees.employee
+                    employeeList: res.data.employees.employee
                 })
             }
         )
-
     }
 
     render() {
         return (
             <div>
                 {
-                    this.state.employeeList.map(item=><Employee key={item.id} {...item}
-                                                                onEvent={(value)=>this.setState({
-                                                                    info:value
-                    })}/>)
+                    this.state.employeeList.map(item => <Employee key={item.id} {...item}
+                                                                  onEvent={(value) => this.setState({
+                                                                      info: value
+                                                                  })}/>)
                 }
                 <EmployeeDetail value={this.state.info}/>
             </div>
@@ -38,18 +40,19 @@ class App extends Component {
 
 class Employee extends Component {
     render() {
-        let {photo,firstName,lastName,detail} = this.props
-        return(
-            <div className="Employee" onClick={()=>this.props.onEvent(detail)}>
+        let {photo, firstName, lastName, detail} = this.props
+        return (
+            <div className="Employee" onClick={() => this.props.onEvent(detail)}>
                 <img src={photo} alt="plt"/>
                 <h4>{firstName} {lastName}</h4>
             </div>
         )
     }
 }
-class EmployeeDetail extends Component{
+
+class EmployeeDetail extends Component {
     render() {
-        return(
+        return (
             <div className="EmployeeDetail">
                 <h4>detail of Employee</h4>
                 {this.props.value}
