@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React, {PureComponent} from 'react';
 
-class App extends Component {
+class App extends PureComponent {
     state={
         myname:"Doris"
     }
@@ -16,13 +16,13 @@ class App extends Component {
         );
     }
 
-    shouldComponentUpdate(nextProps, nextState, nextContext) {
-        if(JSON.stringify(this.state)===JSON.stringify(nextState)){
-            return false
-        }
-        return true
-
-    }
+    // shouldComponentUpdate(nextProps, nextState, nextContext) {
+    //     if(JSON.stringify(this.state)===JSON.stringify(nextState)){
+    //         return false
+    //     }
+    //     return true
+    //
+    // }
 }
 
 export default App;
