@@ -55,7 +55,15 @@ import ReactDOM from 'react-dom/client'
 // import App from './03-hooks/05useEffectcase'
 // import App from './03-hooks/06useEffect3'
 // import App from './03-hooks/07usecallback1'
-import App from './03-hooks/08usecallback2'
+// import App from './03-hooks/08usecallback2'
+// import App from './03-hooks/09useMemo'
+// import App from './03-hooks/10useRef'
+// import App from './03-hooks/11useRef_savevalue'
+// import App from './03-hooks/12useContext'
+// import App from './03-hooks/13useReducer'
+// import App from './03-hooks/14useReducer2'
+// import App from './03-hooks/15useReducer3'
+import App from './03-hooks/16customizehooks'
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
