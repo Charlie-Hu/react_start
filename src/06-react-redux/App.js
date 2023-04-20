@@ -2,22 +2,19 @@ import React, {Component} from 'react';
 import MRouter from "./router/IndexRouter";
 import Tabbar from "./components/Tabbar";
 import './views/css/app.css'
-import {connect} from 'react-redux';
+import {connect} from "react-redux";
 // import store from './redux/store'
-
 class App extends Component {
-    state={
-        isShow:true
-    }
-    componentDidMount(){
-        console.log(this.props)
+
+    componentDidMount() {
+         console.log(this.props)
     }
 
     render() {
         return (
             <div>
                 <MRouter>
-                    {this.state.isShow && <Tabbar></Tabbar>}
+                    {this.props.isshow && <Tabbar></Tabbar>}
                 </MRouter>
 
             </div>
@@ -25,11 +22,11 @@ class App extends Component {
     }
 }
 
-// export default App
-export default  connect((state)=>{
+export default connect((state)=>{
     console.log(state)
     return {
         a:1,
         b:2,
+        isshow:state.isshow_reducer.show
     }
-})(App)
+})(App);

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {HashRouter as Router, Redirect, Route, Switch} from "react-router-dom";
+import {HashRouter as Router, Redirect, Route, Switch} from 'react-router-dom';
 import Films from "../views/Films";
 import Cinemas from "../views/Cinemas";
 import Center from "../views/Center";

@@ -4,7 +4,7 @@ import style from './Tabbar.module.css'
 function isAuth(){
     return localStorage.getItem("token")
 }
-console.log(style)
+console.log(style,"123")
 class Tabbar extends Component {
     render() {
         return (

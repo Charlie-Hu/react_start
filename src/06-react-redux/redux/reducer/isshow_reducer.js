@@ -1,7 +1,7 @@
 const isshow_reducer = (prevState = {
     show: true,
 }, action) => {
-    // console.log(action)
+    console.log(prevState)
     let newState = {...prevState}
     switch (action.type) {
         case "tabbar_hide":

@@ -1,35 +1,24 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import store from "../redux/store";
 import getCinemaListAction from "../redux/action/getCinemaListAction";
 import cinemas_reducer from "../redux/reducer/cinemas_reducer";
+import {connect} from "react-redux";
+import {mapStateToPropsFactory} from "react-redux/es/connect/mapStateToProps";
 
 function Cinemas(props) {
-    const [city] = useState(store.getState().city_reducer.city)
-    const [cinemas, setCinemas] = useState(store.getState().cinemas_reducer.list)
-
-
+    const{list,getCinemaListAction} = props
     useEffect(() => {
-        if (store.getState().cinemas_reducer.list.length === 0) {
-            store.dispatch(getCinemaListAction())
-        } else {
-            console.log("use cache")
+        if (props.list.length === 0) {
+            // store.dispatch(getCinemaListAction())
+            props.getCinemaListAction()
         }
-
-        var unsubscribe = store.subscribe(() => {
-            console.log("subscribe:", store.getState().cinemas_reducer.list)
-            setCinemas(store.getState().cinemas_reducer.list)
-        })
-        return () => {
-            unsubscribe()
-        }
-    }, [])
+    }, [list,getCinemaListAction])
 
     return (
         <div>
             <div style={{overflow: "hidden"}}>
                 <div onClick={() => {
                     props.history.push("/city")
-                }} style={{float: "left"}}>{city}</div>
+                }} style={{float: "left"}}>{props.city}</div>
                 <div style={{float: "right"}} onClick={() => {
                     props.history.push("/cinemas/search")
                 }}>
@@ -37,7 +26,7 @@ function Cinemas(props) {
                 </div>
             </div>
             {
-                cinemas.map(item =>
+                props.list.map(item =>
                     <dl key={item.cinemaId} style={{padding: "10px"}}>
                         <dt>{item.name}</dt>
                         <dd style={{fontSize: "12px", color: "grey"}}>{item.address}</dd>
@@ -46,5 +35,13 @@ function Cinemas(props) {
         </div>
     );
 }
-
-export default Cinemas;
+const mapStateToProps=(state)=>{
+    return{
+        list:state.cinemas_reducer.list,
+        city:state.city_reducer.city
+    }
+}
+const mapDispatchToProps={
+    getCinemaListAction
+}
+export default connect(mapStateToProps,mapDispatchToProps)(Cinemas);

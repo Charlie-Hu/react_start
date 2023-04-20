@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import store from "../redux/store";
+import {connect} from "react-redux";
 
 function City(props) {
     const [list] = useState(["perth", "sydney", "melbourne", "ADELAIDE"])
@@ -9,10 +10,7 @@ function City(props) {
             <ul>
                 {
                     list.map(item => <li key={item} onClick={() => {
-                        store.dispatch({
-                            type: "changeCity",
-                            value: item
-                        })
+                        props.change(item)
                         props.history.push('/cinemas')
                     }}>{item}</li>)
                 }
@@ -21,5 +19,12 @@ function City(props) {
         </div>
     );
 }
-
-export default City;
+const MapDispatchToProps = {
+    change(item){
+        return{
+            type:"changeCity",
+            value:item
+        }
+    }
+}
+export default connect(null,MapDispatchToProps)(City);

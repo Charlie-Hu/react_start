@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
+import ReactDOM from 'react-dom/client';
 // import App from './01-base/class 01'
 // import App from './01-base/function02'
 // import  App from './01-base/nesting03'
@@ -68,13 +68,14 @@ import ReactDOM from 'react-dom/client'
 // import App from './05-redux/App'
 import App from './06-react-redux/App'
 import {Provider} from 'react-redux';
-import store from "./06-react-redux/redux/store";
+import {store,persistor} from './06-react-redux/redux/store';
+import {PersistGate} from "redux-persist/integration/react";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
-    // <React.StrictMode>
     <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persistor}>
+            <App/>
+        </PersistGate>
     </Provider>
-    // </React.StrictMode>
 )

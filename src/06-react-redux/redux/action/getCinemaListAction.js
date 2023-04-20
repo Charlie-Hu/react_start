@@ -1,4 +1,4 @@
-import axios from "axios";
+ import axios from "axios";
 //redux thunk
 // function GetCinemaListAction() {
 //     return (dispatch) => {
