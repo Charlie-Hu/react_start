@@ -8,6 +8,8 @@ import Detail from "../views/Detail";
 import LoginForm from "../views/loginpage";
 import City from "../views/City";
 import Search from "../views/Search";
+import Register from "../views/register";
+
 
 function isAuth(){
     return localStorage.getItem("token")
@@ -28,6 +30,7 @@ class MRouter extends Component {
                             return isAuth()?<Center {...props}></Center>:<Redirect to="/loginpage" ></Redirect>
                         }}></Route>
                         {isAuth()?"":<Route path="/loginpage" component={LoginForm}>< /Route>}
+                        <Route path="/register" component={Register}></Route>
                         <Route path="/city" component={City}></Route>
                         <Route path="/detail/:myId" component={Detail}></Route>
                         {/*<Route path="/detail" component={Detail}></Route>*/}

@@ -30,7 +30,7 @@ export default function LoginForm(props) {
                 }
             });
     }
-
+    console.log(props.csrfToken)
     return (
         <div>
             <form onSubmit={(event)=>handleSubmit(event,props)}>
@@ -46,6 +46,8 @@ export default function LoginForm(props) {
                 </label>
                 <br/>
                 <button type="submit">Login</button>
+                &ensp;&ensp;&ensp;
+                <button onClick={()=>{props.history.push('/register')}}>Register</button>
             </form>
         </div>
     );
